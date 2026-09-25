@@ -94,3 +94,7 @@ record = {
 
 branch = query.match(record)
 ```
+
+## Publishing
+
+See [PUBLISHING.md](PUBLISHING.md) for PyPI Trusted Publishing setup and release instructions.
