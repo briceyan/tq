@@ -6,12 +6,20 @@ It reads JSON Lines, JSON arrays, multiline objects, and consecutive JSON object
 
 ## Get started
 
-Install:
+Install the Python library only:
 
 ```sh
-uv tool install tq-query
-# or: pip install tq-query
+pip install tq-query
 ```
+
+Install the CLI and its optional dependencies:
+
+```sh
+pip install "tq-query[cli]"
+# or: uv tool install "tq-query[cli]"
+```
+
+The `tq` command requires the `cli` extra; without it, the command prints an install hint.
 
 To try `tq` with OpenRouter model data from models.dev, download the catalog and convert it to `models.jsonl`:
 

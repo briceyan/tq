@@ -10,9 +10,6 @@ from collections.abc import Mapping, Sequence
 from pathlib import Path
 from typing import Any
 
-from rich.console import Console
-from rich.json import JSON
-
 from .query import Query, QueryError
 
 
@@ -91,6 +88,11 @@ def main(argv: Sequence[str] | None = None) -> int:
     """Filter records and render each result as JSON."""
     parser = _build_parser()
     args = parser.parse_args(argv)
+    try:
+        from rich.console import Console
+        from rich.json import JSON
+    except ModuleNotFoundError:
+        parser.error("the CLI requires the optional extra; install `tq-query[cli]`")
     try:
         source = (
             Path(args.file).read_text(encoding="utf-8")
