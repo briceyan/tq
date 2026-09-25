@@ -9,8 +9,8 @@ It reads JSON Lines, JSON arrays, multiline objects, and consecutive JSON object
 Install:
 
 ```sh
-uv tool install tq
-# or: pip install tq
+uv tool install tq-query
+# or: pip install tq-query
 ```
 
 To try `tq` with OpenRouter model data from models.dev, download the catalog and convert it to `models.jsonl`:
