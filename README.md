@@ -1,37 +1,27 @@
 # tq
 
-`tq` is a small Python package and CLI for querying JSON records.
+`tq` is a tiny Python package and CLI for querying JSON records from files or stdin.
 
-It reads JSON Lines, JSON arrays, multiline objects, and consecutive JSON objects from a file or stdin, and writes matching records as JSON.
+It reads JSON Lines, arrays of JSON objects, multiline objects, and consecutive JSON objects, then writes matching records as JSON. You can pair it with `jq` to extract or prepare records.
 
 ## Get started
 
-Install the Python library only:
+Install:
 
 ```sh
-pip install tq-json
+pip install tq-json         # package only
+pip install "tq-json[cli]"  # with CLI support
 ```
 
-Install the CLI and its optional dependencies:
+Try `tq` with OpenRouter models from models.dev:
 
 ```sh
-pip install "tq-json[cli]"
-# or: uv tool install "tq-json[cli]"
-```
-
-The `tq` command requires the `cli` extra; without it, the command prints an install hint.
-
-To try `tq` with OpenRouter model data from models.dev, download the catalog and convert it to `models.jsonl`:
-
-```sh
+# Extract models with jq
 curl -fsSL https://models.dev/catalog.json \
   | jq '.providers.openrouter.models[] | {id, modalities, limit, reasoning, tool_call}' -c \
   > models.jsonl
-```
 
-Each line is one model record. Query by identity or fields:
-
-```sh
+# Query with tq
 tq 'openai/*[reasoning;tool_call]' models.jsonl
 tq '[limit.context>=200000]' models.jsonl
 tq '[modalities.input has image]' models.jsonl
@@ -56,7 +46,7 @@ Options:
   -c, --compact         compact JSON output, one record per line
 ```
 
-Color is enabled for terminals and disabled for pipes. `-c` controls formatting independently.
+Color is automatic for terminals (unless `NO_COLOR` is set) and plain for pipes; `-C` and `-M` override it. `-c` only controls JSON formatting.
 
 ## Query syntax
 
