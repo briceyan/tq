@@ -46,7 +46,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: pypi
-      url: https://pypi.org/p/tq-query
+      url: https://pypi.org/p/tq-json
     permissions:
       id-token: write
     steps:

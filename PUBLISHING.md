@@ -1,10 +1,10 @@
 # Publishing
 
-The `publish.yml` workflow publishes `tq-query` to PyPI when a `v*` version tag is pushed. It verifies that the tag matches the version in `pyproject.toml`, runs checks and tests, builds the wheel and source distribution, then publishes them using PyPI Trusted Publishing (OIDC). No PyPI token is stored in GitHub.
+The `publish.yml` workflow publishes `tq-json` to PyPI when a `v*` version tag is pushed. It verifies that the tag matches the version in `pyproject.toml`, runs checks and tests, builds the wheel and source distribution, then publishes them using PyPI Trusted Publishing (OIDC). No PyPI token is stored in GitHub.
 
 ## One-time PyPI setup
 
-Configure a Trusted Publisher for `tq-query` with:
+Configure a Trusted Publisher for `tq-json` with:
 
 - Owner: `briceyan`
 - Repository: `tq`
@@ -12,6 +12,8 @@ Configure a Trusted Publisher for `tq-query` with:
 - Environment: `pypi`
 
 If the project has not been published before, configure it as a pending publisher when creating the PyPI project.
+
+The existing `v0.1.0` tag was used for the legacy `tq-query` distribution. Publish `tq-json` with a new version and matching tag, such as `0.1.1` / `v0.1.1`.
 
 ## Release a version
 

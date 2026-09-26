@@ -92,7 +92,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         from rich.console import Console
         from rich.json import JSON
     except ModuleNotFoundError:
-        parser.error("the CLI requires the optional extra; install `tq-query[cli]`")
+        parser.error("the CLI requires the optional extra; install `tq-json[cli]`")
     try:
         source = (
             Path(args.file).read_text(encoding="utf-8")
